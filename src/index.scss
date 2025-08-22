@@ -1,1 +1,203 @@
 @import 'normalize.css';
+
+:root {
+	--theme-primary-color: #42567A;
+	--theme-primary-color-50-alpha: #42567A50;
+	--theme-font-color: #3877EE;
+	--theme-accent-color: #9DBEFD;
+	--theme-offtop-color: #EF5DA8;
+	--body-padding: 80px;
+}
+
+body {
+	color: var(--theme-primary-color);
+	background-color: #f4f5f9;
+}
+
+/* GRID config START*/
+.appSlider__title {
+	grid-area: title;
+}
+
+.appSlider__paginationContainer {
+	grid-area: pagin;
+	height: 530px;
+	position: relative;
+	margin-top: 45px;
+	margin-bottom: 40px;
+	/* border: 1px solid #000; */
+
+	.appSlider__pagination {
+		margin: auto;
+		position: relative;
+		left: 0;
+		transform: none;
+		height: 100%;
+		width: 100%;
+	}
+
+	&::before {
+		position: absolute;
+		content: "";
+		height: 100%;
+		width: 100%;
+		border: 1px solid #000;
+		border-radius: 50%;
+	}
+}
+
+.appSlider__swiper {
+	grid-area: swiper;
+	width: 100%;
+	padding-top: 56px;
+}
+
+.appSlider__nav {
+	grid-area: nav;
+	display: flex;
+	flex-direction: column;
+	padding-left: var(--body-padding);
+}
+
+.appSlider__navInfo {
+	margin-top: auto;
+}
+
+.appSlider__buttons {
+	display: flex;
+	margin-top: 20px;
+	gap: 20px;
+}
+
+/* GRID config END*/
+.appSlider {
+	max-width: 1440px;
+	/*@TODO: return string below*/
+	padding: 170px 0 80px;
+	/* padding: 50px 0 80px; */
+	margin: 0 auto;
+	position: relative;
+	border-left: 1px solid var(--theme-primary-color-50-alpha);
+	border-right: 1px solid var(--theme-primary-color-50-alpha);
+
+	display: grid;
+	grid-template-areas:
+		"title  pagin ."
+		"nav    pagin ."
+		"swiper swiper swiper";
+
+	grid-template-columns: 1fr 540px 1fr;
+	grid-template-rows: auto;
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		background-color: var(--theme-primary-color-50-alpha);
+	}
+
+	&::before {
+		left: 0;
+		/* top: 50%; */
+		top: calc(540px / 2 + 50px);
+		width: 100%;
+		height: 1px;
+	}
+
+	&::after {
+		top: 0;
+		left: 50%;
+		width: 1px;
+		height: 100%;
+	}
+}
+
+.appSlider__titleText {
+	position: relative;
+	padding-left: var(--body-padding);
+	font-size: 56px;
+	font-weight: bold;
+
+	&::before {
+		content: "";
+		position: absolute;
+		background-image: linear-gradient(var(--theme-accent-color), var(--theme-offtop-color));
+		left: 0;
+		width: 2px;
+		height: 100%;
+	}
+}
+
+.swiper-pagination {
+	--swiper-pagination-bottom: 0px;
+}
+
+.swiper-button-prev {
+	--swiper-navigation-sides-offset: 20px;
+}
+
+.swiper-button-next {
+	right: auto;
+	left: 65px;
+}
+
+/* .swiper-button-prev, */
+.appSlider__buttonPrev,
+.appSlider__buttonNext {
+
+	width: 48px;
+	height: 48px;
+	border: 1px solid var(--theme-primary-color);
+	border-radius: 50%;
+	position: relative;
+	cursor: pointer;
+
+	&:after {
+		--arrow-size: 14px;
+		font-size: var(--arrow-size);
+		color: var(--theme-primary-color);
+		font-family: swiper-icons;
+		position: absolute;
+		top: calc(50% - var(--arrow-size)/2 - 1px);
+		font-weight: 900;
+	}
+
+	&.swiper-button-disabled {
+		opacity: 50%;
+	}
+}
+
+.appSlider__buttonPrev {
+	&:after {
+		content: "prev";
+		left: calc(50% - 5px);
+	}
+
+}
+
+.appSlider__buttonNext {
+	&:after {
+		content: "next";
+		left: calc(50% - 3px);
+	}
+}
+
+.appSlider__bullet {
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+	border-radius: 50%;
+	background: #000;
+	opacity: 0.2;
+
+	&:hover {
+		width: 56px;
+		height: 56px;
+	}
+}
+
+// .swiper-container
+// .swiper-wrapper to have display: inherit;
+
+// I also set
+// .swiper-slide to have display: inherit; width: auto !important; max-width: 100% !important
