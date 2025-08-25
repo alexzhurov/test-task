@@ -214,13 +214,13 @@ class App extends Component<{}, AppComponentState> {
           speed={500}
           fadeEffect={{ crossFade: true }}
           navigation={{
-            prevEl: ".appSlider__buttonPrev",
-            nextEl: ".appSlider__buttonNext",
+            prevEl: `[data-id="prev_${this.state.uniqueId}"`,
+            nextEl: `[data-id="next_${this.state.uniqueId}"`,
           }}
           pagination={{
             clickable: true,
             dynamicBullets: false,
-            el: ".appSlider__pagination",
+            el: `[data-id="pagination_${this.state.uniqueId}"`,
             type: "bullets",
             horizontalClass: "appSlider__paginationRadial",
             bulletClass: "appSlider__bulletBox",
@@ -260,12 +260,13 @@ class App extends Component<{}, AppComponentState> {
           ))}
         </Swiper>
         <div
-          className={`appSlider__pagination appSlider__pagination${this.state.uniqueId}`}
+          className={`appSlider__pagination`}
           style={{
             "--swiper-slides": this.state.swiperLength,
             "--swiper-indx": this.state.swiperIndx,
           }}
           data-indx={`${this.state.swiperIndx}`}
+          data-id={`pagination_${this.state.uniqueId}`}
         ></div>
         <div className="appSlider__nav">
           <span className="appSlider__navInfo">
@@ -274,10 +275,12 @@ class App extends Component<{}, AppComponentState> {
           </span>
           <div className="appSlider__buttons">
             <div
-              className={`appSlider__buttonPrev appSlider__buttonPrev${this.state.uniqueId}`}
+              className={`appSlider__buttonPrev`}
+              data-id={`prev_${this.state.uniqueId}`}
             ></div>
             <div
-              className={`appSlider__buttonNext appSlider__buttonNext${this.state.uniqueId}`}
+              className={`appSlider__buttonNext`}
+              data-id={`next_${this.state.uniqueId}`}
             ></div>
           </div>
         </div>
