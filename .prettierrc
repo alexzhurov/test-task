@@ -1,0 +1,6 @@
+{
+  "tabWidth": 2,
+  "prettier.printWidth": 180,
+  "useTabs": false,
+  "objectWrap": "collapse"
+}

@@ -30,7 +30,7 @@
     
     // Language and Environment Configuration
     "target": "ES2022",
-    "jsx": "react",
+    "jsx": "react-jsx",
 
     // JavaScript Support Configuration
     "allowJs": true,
