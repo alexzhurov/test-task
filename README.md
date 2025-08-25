@@ -1,7 +1,9 @@
-# Stack
+# Как запустить проект
+- npm start
+
+## Stack
 
 - webpack
 - React.js
 - typescript
 - swiperjs
-- gsap (js animation)
