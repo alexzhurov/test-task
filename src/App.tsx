@@ -186,46 +186,9 @@ class App extends Component<{}, AppComponentState> {
   getMaxYear(dataIndx: number): number {
     return Math.max(...this.state.data[dataIndx].items.map(({ year }) => year));
   }
-  setYears(activeSlideIndx: number): void {
-    const durationMs: number = 1000;
-    const prevMinYear = this.state.minYear;
-    const prevMaxYear = this.state.maxYear;
-
-    const minYear = this.getMinYear(activeSlideIndx);
-    const maxYear = this.getMaxYear(activeSlideIndx);
-
-    const count = Math.abs(minYear - prevMinYear);
-    const delay = Math.floor(durationMs / count);
-    console.log(activeSlideIndx, delay, count, prevMinYear, minYear);
-
-    let myInterval = setInterval(() => {
-      console.log(delay, count, prevMinYear, minYear, this);
-      this
-    }, delay);
-    setTimeout(() => {
-      clearInterval(myInterval);
-      console.log("Interval stopped.");
-    }, durationMs);
-
-    this.setState({ minYear, maxYear });
-  }
 
   override render() {
     return (
-      // @TODO:
-      // сверстать основную сетку
-      // + navigation - вывести номер слайда
-      // + navigation - форматировать номер слайда до вида (01/06)
-      // + pagination - докопаться до стилизации
-      // + pagination - сделать круг с симметричным динамическим позиционированием
-      // + pagination - добавить анимацию
-      // + navigation - стилизовать
-      // + swiper       - вывести рендер данных из JSON
-      // + NUMBERS      - стилизовать числа(2015 2022)
-      //   NUMBERS      - добавить пересчет годов(2015 2022)
-      // + pagination   - убрать кручение при первом отображении
-      //
-
       <div className="appSlider">
         <div className="appSlider__title">
           <div className="appSlider__titleText">
