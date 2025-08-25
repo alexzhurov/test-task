@@ -55,7 +55,6 @@ body {
 
 		border-radius: 50%;
 
-		// transform: rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle)));
 		transform: rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle) + var(--angle-pag)));
 		top: calc(50% - calc(var(--bullet-width) / 2));
 		left: calc(50% - calc(var(--bullet-width) / 2));
@@ -73,7 +72,6 @@ body {
 				width: 100%;
 				height: 100%;
 			}
-
 		}
 
 		&.appSlider__bullet--active {
@@ -144,9 +142,7 @@ body {
 /* GRID config END*/
 .appSlider {
 	max-width: 1440px;
-	/*@TODO: return string below*/
 	padding: var(--pagination-container-padding-top) 0 80px;
-	/* padding: 50px 0 80px; */
 	margin: 0 auto;
 	position: relative;
 	border-left: 1px solid var(--theme-primary-color-10-alpha);
@@ -198,7 +194,7 @@ body {
 		position: absolute;
 		background-image: linear-gradient(var(--theme-accent-color), var(--theme-offtop-color));
 		left: 0;
-		width: 2px;
+		width: 5px;
 		height: 100%;
 	}
 }
