@@ -16,16 +16,20 @@ import "swiper/scss/effect-fade";
 
 import Slide from "./components/Slide";
 
-interface AppComponentState {
+interface IDataItem {
+  sphere: string;
+  items: { year: number; text: string }[];
+}
+interface IAppComponentState {
   uniqueId: any;
   swiperIndx: number;
   swiperLength: number;
   minYear: number;
   maxYear: number;
-  data: { sphere: string; items: { year: number; text: string }[] }[];
+  data: IDataItem[];
 }
 
-class App extends Component<{}, AppComponentState> {
+class App extends Component<{}, IAppComponentState> {
   constructor(props: {}) {
     super(props);
     const data = [
@@ -225,17 +229,11 @@ class App extends Component<{}, AppComponentState> {
             horizontalClass: "appSlider__paginationRadial",
             bulletClass: "appSlider__bulletBox",
             bulletActiveClass: "appSlider__bullet--active",
-            renderBullet: (index, className) => {
-              return (
-                `<div class="${className}" style="--bullet-n: ${index};">` +
-                `<div class="appSlider__bullet">` +
-                (index + 1) +
-                "</div>" +
-                `<div class="appSlider__sphere">` +
-                this.state.data[index].sphere +
-                "</div>" +
-                "</div>"
-              );
+            renderBullet: (index: number, className: string) => {
+              return `<div class="${className}" style="--bullet-n: ${index};">
+                  <div class="appSlider__bullet">${index + 1}</div>
+                  <div class="appSlider__sphere">${this.state.data[index].sphere}</div>
+                </div>`;
             },
           }}
           onSwiper={({ slides }) => {
@@ -290,3 +288,4 @@ class App extends Component<{}, AppComponentState> {
 }
 
 export default App;
+export type { IDataItem };

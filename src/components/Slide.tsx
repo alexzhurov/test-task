@@ -1,15 +1,15 @@
 import { Navigation, Pagination } from "swiper/modules";
-import { useId } from "react";
+import { FC } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./Slide.scss";
+import { IDataItem } from "../App";
 
-const Slide = (props) => {
+const Slide: FC<{ data: IDataItem }> = ({data}) => {
   const uniqueId = crypto.randomUUID(); // Generate and store the unique ID
 
+  console.log(data);
   return (
     <div className="appSubslide">
-      {/* <div className="appSlide__startYear">2015</div> */}
-      {/* <div className="appSlide__endYear">2022</div> */}
       <Swiper
         // @TODO: pagination only for mobile
         modules={[Navigation]}
@@ -22,7 +22,7 @@ const Slide = (props) => {
         }}
         watchOverflow={false}
       >
-        {props.data.items.map(({ year, text }, index) => {
+        {data.items.map(({ year, text }, index) => {
           return (
             <SwiperSlide key={index}>
               <div className="appSubslide__title">{year}</div>
