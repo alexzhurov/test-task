@@ -82,17 +82,11 @@ class App extends Component<{}, IAppComponentState> {
             horizontalClass: "appSlider__paginationRadial",
             bulletClass: "appSlider__bulletBox",
             bulletActiveClass: "appSlider__bullet--active",
-            renderBullet: (index, className) => {
-              return (
-                `<div class="${className}" style="--bullet-n: ${index};">` +
-                `<div class="appSlider__bullet">` +
-                (index + 1) +
-                "</div>" +
-                `<div class="appSlider__sphere">` +
-                this.state.data[index].sphere +
-                "</div>" +
-                "</div>"
-              );
+            renderBullet: (index: number, className: string) => {
+              return `<div class="${className}" style="--bullet-n: ${index};">
+                  <div class="appSlider__bullet">${index + 1}</div>
+                  <div class="appSlider__sphere">${this.state.data[index].sphere}</div>
+                </div>`;
             },
           }}
           onSwiper={({ slides }) => {
